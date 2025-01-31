@@ -32,7 +32,7 @@ export default function LineChartJS({ data, nombreFoto }) {
     const misoptions = {
         scales: {
             y: {
-                min: 0,
+                min: 35,
                 title: {
                     display: true,
                     text: 'Nivel de Ruido (dB)'
@@ -50,7 +50,7 @@ export default function LineChartJS({ data, nombreFoto }) {
     return (
         <div className="flex-fill w-100">
             <div className="shadow-lg flex-fill w-100 mb-2" ref={chartRef}>
-                <h5 className="texto-primario-h3 mb-0">Gráfica de Ruido Semanal</h5>
+                <h5 className="texto-primario-h3 mb-0">Gráfica de Ruido</h5>
                 <div className="card-body d-flex w-100 p-4">
                     <Line data={data} options={misoptions} />
                 </div>

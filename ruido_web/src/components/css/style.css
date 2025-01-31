@@ -1,6 +1,6 @@
 :root {
-  --verde_principal:#36ab2b;
-  --verde_secundario: #2b7c36;
+  --verde_principal:#164E63;
+  --verde_secundario: #164E63;
   --azul: rgb(12, 35, 65);
   --azul_secundario:#0d4f81;
   --blanco: #FFF;
@@ -13,7 +13,7 @@
 }
 
 .btn-verde {
-  background-color: var(--verde_principal);
+  background-color: var(#164E63);
   color: white;
   border: none; 
 }
@@ -143,7 +143,7 @@ th {
 }
 
 td {
-  text-align: justify;
+  text-align: center;
   vertical-align: middle !important;
 }
 

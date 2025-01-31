@@ -101,6 +101,35 @@ const MapComponent = () => {
                                         <option value="semana">Semana</option>
                                     </select>
                                 </div>
+                                {/* Separación antes de la tabla */}
+                                <div className="crud shadow-lg p-3 mb-5 bg-body rounded mt-5" style={{ display: 'flex', flexDirection: 'column' }}>
+                                    <div className="col">
+                                        <div className="table-responsive">
+                                            <table className="table table-striped">
+                                                <thead>
+                                                    <tr>
+                                                        <th>CLASIFICACIÓN</th>
+                                                        <th>RANGO</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <td>BUENO</td>
+                                                        <td className="text-center">0 - 49 dB</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>REGULADOR</td>
+                                                        <td className="text-center">50 - 70 dB</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>MALO</td>
+                                                        <td className="text-center">71 - 100 dB</td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -108,6 +137,7 @@ const MapComponent = () => {
             </main>
         </div>
     );
+     
 };
 
 export default MapComponent;

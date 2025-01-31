@@ -11,6 +11,7 @@ router.get('/', function(req, res, next) {
 router.get('/datos/semana', datosController.listarDatosSemana);
 router.get('/datos/dia', datosController.listarDatosDia);
 router.get('/datos', datosController.listarDatos);
+router.get('/ultimo', datosController.ultimo);
 
 
 module.exports = router;
