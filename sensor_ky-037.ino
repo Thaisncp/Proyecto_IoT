@@ -1,14 +1,11 @@
 #include <WiFi.h>
 #include <PubSubClient.h>
+#include <math.h>
 
-// Pines en la ESP32
 const int analogPin = 34;
 
-// Configuración de Wi-Fi
 const char* ssid = "DAYSI";
 const char* password = "1106042474001";
-
-// Configuración del broker MQTT
 const char* mqtt_server = "20.205.17.176";
 const int mqtt_port = 1883;
 const char* topic = "ruido";
@@ -45,6 +42,19 @@ void reconnect() {
   }
 }
 
+float analogToDecibels(int analogValue) {
+  const int referenceValue = 34;
+  const float scalingFactor = 0.125;
+
+  if (analogValue <= referenceValue) {
+    return 0;
+  }
+
+  float decibels = (analogValue - referenceValue) * scalingFactor;
+
+  return decibels > 1.0 ? decibels : 1.0;
+}
+
 void setup() {
   Serial.begin(115200);
   pinMode(analogPin, INPUT);
@@ -59,11 +69,15 @@ void loop() {
   client.loop();
 
   int analogValue = analogRead(analogPin);
-  Serial.print("Valor leído: ");
-  Serial.println(analogValue);
+  float decibels = analogToDecibels(analogValue);
+
+  Serial.print("Valor analógico: ");
+  Serial.print(analogValue);
+  Serial.print(" | Valor en dB: ");
+  Serial.println(decibels);
 
   char payload[50];
-  snprintf(payload, 50, "{\"ruido\": %d}", analogValue);
+  snprintf(payload, 50, "{\"ruido\": %.2f}", decibels);
   client.publish(topic, payload);
   Serial.print("Valor publicado: ");
   Serial.println(payload);
